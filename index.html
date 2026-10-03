@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>System Scan</title>
+<style>
+body {
+    margin: 0;
+    background: black;
+    color: #00ff00;
+    font-family: monospace;
+    overflow: hidden;
+}
+#numbers {
+    position: fixed;
+    inset: 0;
+    font-size: 18px;
+    line-height: 22px;
+    word-break: break-all;
+    opacity: 0.7;
+}
+.box {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #050505;
+    border: 2px solid #00ff00;
+    padding: 30px;
+    text-align: center;
+    box-shadow: 0 0 25px #00ff00;
+}
+button {
+    background: #00ff00;
+    border: none;
+    padding: 15px 25px;
+    font-weight: bold;
+    cursor: pointer;
+}
+</style>
+</head>
+<body>
+<div id="numbers"></div>
+<div class="box">
+    <h2>SYSTEM SCAN</h2>
+    <p>ACCESS CHECK: <span id="percent">0</span>%</p>
+    <p>STATUS: READY</p>
+    <button onclick="openSnap()">
+        OUVRIR SNAPCHAT
+    </button>
+</div>
+<script>
+let numbers = document.getElementById("numbers");
+setInterval(() => {
+    let text = "";
+    for (let i = 0; i < 300; i++) {
+        text += Math.floor(Math.random() * 10);
+    }
+    numbers.innerText = text;
+}, 100);
+let p = 0;
+setInterval(() => {
+    p += Math.floor(Math.random() * 8) + 1;
+    if (p >= 100) p = 100;
+    document.getElementById("percent").innerText = p;
+}, 150);
+function openSnap() {
+    window.location.href = "snapchat://";
+}
+</script>
+</body>
+</html>
